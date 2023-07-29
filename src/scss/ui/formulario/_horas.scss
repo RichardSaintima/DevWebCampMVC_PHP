@@ -1,0 +1,39 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.horas {
+    @include m.reset-lista;
+    @include m.grid(1, 1rem);
+    @include m.tablet {
+        @include m.grid(2, 1rem);
+    }
+
+    &__hora {
+        color: v.$azul;
+        border: 1px solid v.$azul;
+        border-radius: 1rem;
+        padding: 1rem;
+        text-align: center;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &--seleccionada {
+            @extend .horas__hora;
+            background-color: v.$azul;
+            color: v.$blanco;
+        }
+
+        &--deshabilitada {
+            @extend .horas__hora;
+            border: 1px solid v.$gris;
+            color: v.$gris;
+            opacity: .5;
+
+            &:hover {
+                cursor: not-allowed;
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.footer {
+    background-color: v.$azul;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    color: v.$blanco;
+
+    &__grid {
+        @include m.contenedor;
+        @include m.tablet {
+            @include m.grid(2, 3rem);
+        }
+    }
+
+    &__logo {
+        @include m.logo;
+        @include m.texto-fluido(2rem, 4rem);
+    }
+
+    &__texto {
+        line-height: 2;
+        text-align: center;
+        @include m.tablet {
+            text-align: left;
+        }
+    }
+
+    &__copyright {
+        background-color: darken(v.$azul, 10);
+        margin: 3rem 0 0 0;
+        padding: 2rem 0;
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: v.$black;
+
+        &--regular {
+            font-weight: v.$regular;
+        }
+    }
+}

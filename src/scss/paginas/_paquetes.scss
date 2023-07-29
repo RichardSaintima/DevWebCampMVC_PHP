@@ -1,0 +1,116 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.paquetes {
+    &__grid {
+        @include m.contenedor;
+        @include m.grid(1, 3rem);
+        @include m.tablet {
+            @include m.grid(3, 3rem);
+            align-items: flex-start;
+        }
+    }
+
+    &__submit {
+        @include m.boton(v.$azul, v.$blanco);
+        margin-top: 3rem;
+    }
+}
+
+.paquete {
+    @include m.card;
+    &:nth-child(2) {
+        order: -1;
+        @include m.tablet {
+            order: unset;
+        }
+    }
+
+    &__lista {
+        @include m.reset-lista;
+        line-height: 2;
+    }
+    &__precio {
+        font-size: 6rem;
+        margin: 3rem 0;
+        color: v.$azul;
+        font-weight: v.$black;
+        text-align: center;
+    }
+
+
+    &--acceso {
+        width: 30rem;
+        height: 50rem;
+        padding: 10rem 3rem;
+        display: flex;
+        justify-content: flex-start;
+
+        $modificador: &;
+
+        #{$modificador}__logo {
+            @include m.texto-fluido(2rem, 3rem);
+            text-align: left;
+            margin: 0;
+            @include m.tablet {
+                @include m.texto-fluido(2rem, 4rem);  
+            }
+        }
+
+        #{$modificador}__codigo {
+            font-size: 4rem;
+            font-weight: v.$bold;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            top: calc(100% - 15rem);
+
+            @include m.tablet {
+                top: 0;
+                width: unset;
+                left: unset;
+                right: -15rem;
+                transform: rotate(90deg);
+                transform-origin: top left;
+            }
+        }
+
+        &::before {
+            clip-path: circle(50% at 50% 25% );
+            left: calc(50% - 2.5rem);
+            top: 0;
+        }
+        &::after {
+            clip-path: circle(50% at 50% 75% );
+            left: calc(50% - 2.5rem);
+            top: calc(100% - 5rem);
+        }
+
+        @include m.tablet {
+            width: 60rem;
+            height: 30rem;
+            padding: 6rem;
+            flex-direction: column;
+            justify-content: center;
+            &::before {
+                clip-path: circle(50% at 25% 50%);
+                left: 0;
+                top: calc(50% - 2.5rem);
+        
+            }
+            &::after {
+                clip-path: circle(50% at 75% 50%);
+                left: calc(100% - 5rem);
+                top: calc(50% - 2.5rem);
+            }
+        }
+    }
+
+    &__nombre {
+        font-size: 2.4rem;
+        font-weight: v.$black;
+        text-transform: uppercase;
+    }
+
+}

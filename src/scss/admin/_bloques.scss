@@ -1,0 +1,49 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.bloques {
+   @include m.contenedor;
+   @include m.tablet {
+        margin-top: 10rem;
+   }
+
+   &__grid {
+       @include m.grid(1, 3rem);
+       @include m.desktop {
+           @include m.grid(2, 3rem);
+       }
+   }
+}
+
+.bloque {
+    padding: 3rem;
+    color: v.$blanco;
+    border-radius: 1rem;
+
+    &:nth-child(1) {
+       @include m.bg-gradient(#F97316);
+    }
+    &:nth-child(2) {
+        @include m.bg-gradient(#A855F7);
+    }
+    &:nth-child(3) {
+        @include m.bg-gradient(#59910b);
+    }
+     &:nth-child(4) {
+        @include m.bg-gradient(#17769E);
+     }
+    &__heading {
+        margin: 1rem 0 2rem 0;
+        font-size: 3.6rem;
+    }
+    &__texto {
+        margin: 1rem 0;
+
+        &--cantidad {
+            margin-top: 5rem;
+            font-weight: v.$black;
+            font-size: 6rem;
+            text-align: center;
+        }
+    }
+}

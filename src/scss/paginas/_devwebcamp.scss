@@ -1,0 +1,18 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.devwebcamp {
+
+    &__grid {
+        @include m.contenedor;
+        @include m.grid(1, 3rem);
+        @include m.tablet {
+            @include m.grid(2, 5rem);
+            align-items: center;
+        }
+    }
+
+    &__texto {
+        line-height: 2;
+    }
+}

@@ -1,0 +1,75 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.header {
+    min-height: 60rem;
+    background-image: url(../img/grafico.svg), url(../img/grafico.svg), linear-gradient(to right, rgba(v.$negro, 1), rgba(v.$negro, .5)  ), image-set( url(../img/header.avif) 1x, url(../img/header.webp) 1x, url(../img/header.jpg) 1x );
+
+    background-repeat: no-repeat;
+    background-size: 400px, 400px, cover, cover;
+    background-position: top left, bottom right, center center, center center ;
+
+
+    &__contenedor {
+        @include m.contenedor;
+    }
+
+    &__navegacion {
+        padding: 5rem 0;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        @include m.tablet {
+            justify-content: flex-end;
+        }
+    }
+
+    &__enlace {
+        @include m.enlace;
+    }
+    &__form {
+        display: flex;
+    }
+    &__submit {
+        @extend .header__enlace;
+    }
+    &__contenido {
+        padding-top: 10rem;
+        @include m.tablet {
+            padding-top: 5rem;
+        }
+    }
+    &__logo {
+        @include m.texto-fluido(2rem, 8rem);
+        @include m.texto-degradado(v.$azul, v.$secundario);
+        text-align: center;
+        @include m.tablet {
+            text-align: left;
+            display: inline-block;
+        }
+    }
+    &__texto {
+        font-size: 3rem;
+        font-weight: v.$bold;
+        color: v.$blanco;
+        margin: 2rem 0;
+        text-align: center;
+        text-transform: uppercase;
+        @include m.tablet {
+            text-align: left;
+        }
+
+        &--modalidad {
+            font-size: 2rem;
+        }
+    }
+
+    &__boton {
+        @include m.boton(v.$secundario, v.$blanco);
+        text-transform: uppercase;
+        margin: 2rem 0;
+        @include m.tablet {
+            width: auto;
+        }
+    }
+}
